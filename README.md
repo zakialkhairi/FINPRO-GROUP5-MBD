@@ -2,16 +2,9 @@
 
 ## Smart Door Lock with Multi-Mode Access
 
-Smart Door Lock with Multi-Mode Access adalah sistem kunci pintu berbasis Arduino yang menyediakan mekanisme keamanan melalui autentikasi password menggunakan keypad sebagai input dan juga didukung oleh komunikasi serial untuk logging dan monitoring sistem.
-
-Sistem ini memiliki 3 mode operasi yaitu **Locked**, **Unlocked**, dan **Alarm**, yang dikendalikan oleh logika program dengan memanfaatkan timer, interrupt, dan pengolahan data. Ketika password dimasukkan dengan benar melalui keypad, kunci akan terbuka (menggerakkan servo sebagai dummy pintu) dan kembali terkunci otomatis setelah beberapa waktu, sementara percobaan gagal berulang akan mengaktifkan alarm berupa buzzer dan indikator LED. Tombol darurat memungkinkan akses langsung melalui interrupt untuk kondisi tertentu.
-
 ---
 
 ## Anggota Kelompok 5
-
-Berikut adalah anggota tim Finpro MBD - Group 5:
-
 | No | Nama | NPM | Peran / Fokus |
 |---|---|---|---|
 | 1 | **Muhammad Zaki Alkhairi** | - | ... |
@@ -21,13 +14,56 @@ Berikut adalah anggota tim Finpro MBD - Group 5:
 
 ---
 
-## Fitur Utama
+## 1. Introduction to the problem and the solution
 
-- **Autentikasi Multi-Mode:** Manajemen 3 status utama sistem (`Locked`, `Unlocked`, `Alarm`) secara real-time.
-- **Input Keypad 4x4:** Antarmuka input password yang responsif untuk membuka akses penguncian.
-- **Mekanisme Auto-Lock (Timer):** Penguncian kembali secara otomatis menggunakan kalkulasi waktu berbasis timer internal setelah pintu terbuka.
-- **Sistem Keamanan & Alarm:** Deteksi *brute-force* (salah password berulang) yang otomatis memicu buzzer dan LED indikator.
-- **Tombol Darurat (External Interrupt):** Fitur *bypass* instan menggunakan pin interrupt eksternal untuk membuka kunci dalam kondisi darurat.
-- **Serial Logging:** Monitoring status sistem, input, dan error handling melalui Serial Communication.
+### The Problem
+Keamanan akses ruangan konvensional yang mengandalkan kunci fisik memiliki berbagai kelemahan, mulai dari risiko kunci hilang, mudah digandakan, hingga sulitnya memantau histori akses secara terpusat. Selain itu, sistem penguncian manual tidak memiliki mekanisme pertahanan aktif apabila terjadi upaya pembobolan atau akses paksa secara berulang.
+
+### The Solution
+Proyek ini mengimplementasikan **Smart Door Lock with Multi-Mode Access** berbasis Arduino (ATmega328P) sebagai solusi sistem penguncian digital yang aman, interaktif, dan responsif. Sistem ini menggunakan autentikasi password melalui keypad serta dilengkapi dengan sistem kendali status (*state management*) yang ketat. Kunci digital ini mengintegrasikan fungsi penguncian otomatis, indikator alarm pertahanan terhadap *brute-force*, serta tombol darurat fisik untuk memastikan keamanan sekaligus kemudahan akses pengguna.
 
 ---
+
+## 2. Hardware design and implementation details
+
+Sistem ini mengintegrasikan komponen input, proses, dan output yang saling terhubung untuk membangun subsistem keamanan yang utuh:
+
+- **Microcontroller:** Arduino Uno (ATmega328P) sebagai unit pemroses utama.
+- **Input Devices:**
+  - **Keypad 4x4:** Digunakan sebagai antarmuka utama pengguna untuk memasukkan kombinasi password.
+  - **Push Button:** Dikonfigurasikan sebagai *Emergency Switch* yang terhubung ke pin Interrupt eksternal.
+- **Output Devices:**
+  - **Servo Motor:** Berfungsi sebagai *dummy* dari mekanisme fisik slot kunci pintu.
+  - **Buzzer:** Komponen audio untuk menghasilkan bunyi peringatan (alarm).
+  - **LED Indikator:** LED Merah dan Hijau untuk merepresentasikan status visual dari sistem penguncian.
+- **Communication:** Jalur komunikasi serial (UART) ke PC untuk keperluan *logging* data secara *real-time*.
+
+---
+
+## 3. Software implementation details
+
+Arsitektur perangkat lunak dibangun di atas ekosistem Arduino dengan memanfaatkan fitur-fitur tingkat rendah dari mikrokontroler untuk menjamin performa yang *real-time*:
+
+- **Multi-Mode State Machine:** Logika program mengendalikan 3 mode operasi utama:
+  1. `Locked`: Mode siaga di mana pintu terkunci, LED merah menyala, dan sistem menunggu input keypad.
+  2. `Unlocked`: Mode akses terbuka setelah password benar, ditandai dengan pergerakan servo dan LED hijau menyala.
+  3. `Alarm`: Mode proteksi aktif yang terpicu apabila terjadi kesalahan input password secara berulang.
+- **Timer & Auto-Lock:** Memanfaatkan manajemen waktu (*timing logic*) untuk menghitung durasi mode `Unlocked` sebelum memicu modul servo agar kembali ke posisi `Locked` secara otomatis.
+- **External Interrupt Handling:** Menggunakan interupsi eksternal pada pin hardware untuk membaca *Push Button* darurat. Mekanisme ini memastikan sistem langsung berpindah ke mode akses tertentu secara instan tanpa tertahan oleh proses *looping* utama.
+- **Serial Communication Logging:** Mengirimkan data status sistem, *log* percobaan input, serta indikasi *error* ke Serial Monitor untuk keperluan monitoring eksternal.
+
+---
+
+## 4. Test results and performance evaluation
+
+...
+
+---
+
+## 5. Conclusion and future work
+
+### Conclusion
+...
+
+### Future Work
+...
