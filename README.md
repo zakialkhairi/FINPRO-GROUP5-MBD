@@ -1,15 +1,13 @@
-# FINPRO-GROUP5-MBD
-
-## Smart Door Lock with Multi-Mode Access
+# FINPRO-GROUP5-MBD - Smart Door Lock with Multi-Mode Access
 
 ---
 
 ## Anggota Kelompok 5
 | No | Nama | NPM | Peran / Fokus |
 |---|---|---|---|
-| 1 | **Muhammad Zaki Alkhairi** | - | ... |
+| 1 | **Muhammad Zaki Alkhairi** | 2406432375 | ... |
 | 2 | **Muhammad Hashif Jade** | 2406396786 | ... |
-| 3 | **Naziehan Labieb** | - | ... |
+| 3 | **Naziehan Labieb** | 2406487102 | ... |
 | 4 | **Toriq Fathoni Dezi** | - | ... |
 
 ---
