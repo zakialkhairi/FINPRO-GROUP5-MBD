@@ -8,7 +8,7 @@
 | 1 | **Muhammad Zaki Alkhairi** | 2406432375 | ... |
 | 2 | **Muhammad Hashif Jade** | 2406396786 | ... |
 | 3 | **Naziehan Labieb** | 2406487102 | ... |
-| 4 | **Toriq Fathoni Dezi** | - | ... |
+| 4 | **Toriq Fathoni Dezi** | 2406487115 | ... |
 
 ---
 
