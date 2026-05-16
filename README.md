@@ -1,14 +1,14 @@
-# FINPRO-GROUP5-MBD - Smart Door Lock with Multi-Mode Access
+# FINPRO GROUP5 MBD - Smart Door Lock with Multi-Mode Access
 
 ---
 
 ## Anggota Kelompok 5
 | No | Nama | NPM | Peran / Fokus |
 |---|---|---|---|
-| 1 | **Muhammad Zaki Alkhairi** | 2406432375 | ... |
-| 2 | **Muhammad Hashif Jade** | 2406396786 | ... |
-| 3 | **Naziehan Labieb** | 2406487102 | ... |
-| 4 | **Toriq Fathoni Dezi** | 2406487115 | ... |
+| 1 | **Muhammad Zaki Alkhairi** | 2406432375 | Membuat dokumentasi dan presentasi proyek. |
+| 2 | **Muhammad Hashif Jade** | 2406396786 | Membuat penyusunan laporan proyek, dokumentasi dan presentasi proyek. |
+| 3 | **Naziehan Labieb** | 2406487102 | Membuat program dan logika sistem, Membuat rangkaian di Wokwi, Membuat rangkaian fisik. |
+| 4 | **Toriq Fathoni Dezi** | 2406487115 | Membuat program dan logika sistem, Membuat rangkaian fisik. |
 
 ---
 
@@ -34,6 +34,7 @@ Sistem ini mengintegrasikan komponen input, proses, dan output yang saling terhu
   - **Servo Motor:** Berfungsi sebagai *dummy* dari mekanisme fisik slot kunci pintu.
   - **Buzzer:** Komponen audio untuk menghasilkan bunyi peringatan (alarm).
   - **LED Indikator:** LED Merah dan Hijau untuk merepresentasikan status visual dari sistem penguncian.
+  - **LCD I2C:** Digunakan untuk menampilkan status sistem dan instruksi kepada pengguna secara real-time.
 - **Communication:** Jalur komunikasi serial (UART) ke PC untuk keperluan *logging* data secara *real-time*.
 
 ---
@@ -54,14 +55,28 @@ Arsitektur perangkat lunak dibangun di atas ekosistem Arduino dengan memanfaatka
 
 ## 4. Test results and performance evaluation
 
-...
+Pengujian sistem dilakukan untuk memastikan seluruh komponen dan fitur dapat berjalan sesuai dengan rancangan. Pengujian meliputi input password melalui keypad, tampilan status pada LCD I2C, pergerakan servo motor, indikator LED, buzzer alarm, serta fungsi tombol darurat berbasis interrupt. Sistem diuji pada beberapa kondisi seperti password benar, password salah, dan penggunaan emergency button.
+
+Hasil pengujian menunjukkan bahwa sistem mampu menjalankan seluruh fungsi utama dengan baik. Pada kondisi awal, LED merah menyala untuk menandakan bahwa pintu berada dalam mode `Locked`. Ketika password yang benar dimasukkan, servo bergerak membuka kunci pintu dan LED hijau menyala sebagai indikator akses berhasil. Setelah beberapa detik, sistem kembali ke mode `Locked` secara otomatis menggunakan mekanisme timer.
+
+Selain itu, ketika password salah dimasukkan beberapa kali secara berturut-turut, buzzer alarm aktif sebagai bentuk proteksi terhadap percobaan akses ilegal. LCD I2C berhasil menampilkan informasi status sistem secara real-time seperti instruksi memasukkan password dan status akses. Push button darurat juga dapat menjalankan fungsi interrupt dengan baik sehingga sistem mampu memberikan akses langsung secara cepat tanpa terganggu proses utama pada program.
+
+Secara keseluruhan, performa sistem berjalan stabil baik pada simulasi Wokwi maupun implementasi hardware fisik. Integrasi antara hardware dan software berhasil dilakukan dengan baik sehingga sistem mampu menjalankan autentikasi, kontrol akses pintu, alarm keamanan, dan monitoring sistem sesuai tujuan proyek.
 
 ---
 
 ## 5. Conclusion and future work
 
 ### Conclusion
-...
+Proyek **Smart Door Lock with Multi-Mode Access** berhasil dirancang dan diimplementasikan menggunakan Arduino Uno sebagai pengendali utama sistem. Sistem mampu menjalankan autentikasi password melalui keypad, mengontrol akses pintu menggunakan servo motor, serta memberikan indikator keamanan menggunakan LED dan buzzer. Selain itu, penerapan konsep timer dan interrupt berhasil mendukung fitur otomatisasi dan akses darurat pada sistem keamanan pintu.
+
+Implementasi sistem menunjukkan bahwa konsep Embedded System dapat diterapkan secara efektif pada aplikasi keamanan sederhana berbasis mikrokontroler. Integrasi antara hardware dan software juga berhasil dilakukan dengan baik sehingga seluruh fitur utama sistem dapat berjalan sesuai dengan perancangan dan kebutuhan pengguna.
 
 ### Future Work
-...
+Beberapa pengembangan yang dapat dilakukan pada proyek ini di masa mendatang antara lain:
+
+- Menambahkan teknologi RFID atau sensor sidik jari sebagai metode autentikasi tambahan.
+- Mengintegrasikan sistem dengan IoT agar dapat dimonitor dan dikontrol melalui smartphone.
+- Menambahkan database penyimpanan histori akses pengguna.
+- Menggunakan solenoid door lock agar mekanisme penguncian lebih realistis.
+- Menambahkan sistem backup power untuk menjaga sistem tetap aktif saat listrik mati.
