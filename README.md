@@ -11,6 +11,7 @@
 | 4 | **Toriq Fathoni Dezi** | 2406487115 | Membuat program dan logika sistem, Membuat rangkaian fisik. |
 
 ---
+## Link Wokwi
 
 [Wokwi Link](https://wokwi.com/projects/464071491111991297)
 
