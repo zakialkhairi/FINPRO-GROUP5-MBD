@@ -1034,6 +1034,7 @@ lcd_show_input_progress:
     ldi  XH, hi8(INPUT_BUF)
 lip_chars:
     ld   r25, X+
+    ldi  r25, '*'           ; 
     push r17                ; Mengisolasi batas Register [r17] dengan memidahkan ke ruang memori tumpukan sementara
     rcall lcd_data
     pop  r17
