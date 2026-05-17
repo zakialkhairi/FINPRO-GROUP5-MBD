@@ -80,3 +80,4 @@ Beberapa pengembangan yang dapat dilakukan pada proyek ini di masa mendatang ant
 - Menambahkan database penyimpanan histori akses pengguna.
 - Menggunakan solenoid door lock agar mekanisme penguncian lebih realistis.
 - Menambahkan sistem backup power untuk menjaga sistem tetap aktif saat listrik mati.
+
